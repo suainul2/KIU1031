@@ -1,0 +1,29 @@
+syntax = "proto3";
+option go_package = "/seller/grpc/proto.invoice";
+
+message InvoiceData {
+    int32 id = 1;
+    int32 user_id = 2;
+    int32 driver_id = 3;
+    string code = 4;
+    int32 shipping_cost = 5;
+    double from_latitude = 6;
+    double from_longitude = 7;
+    double to_latitude = 8;
+    double to_longitude = 9;
+    string address = 10;
+    int32 status = 11;
+}
+message InvoiceFilter {
+    int32 driver_id = 1;
+    int32 user_id = 2;
+    int32 product_id = 3;
+    double from_latitude = 4;
+    double from_longitude = 5;
+    double to_latitude = 6;
+    double to_longitude = 7;
+    string address = 8;
+}
+service InvoiceService {
+    rpc CreateInvoice(InvoiceFilter) returns(InvoiceData) {}
+}
